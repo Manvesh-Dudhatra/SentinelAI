@@ -7,6 +7,9 @@ class CustomUser(AbstractUser):
     id = models.UUIDField(primary_key=True, editable=False, default = uuid.uuid4())
     is_verified = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.username
+
 class Employee(models.Model):
     id = models.UUIDField(primary_key=True, editable=False, default = uuid.uuid4())
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
